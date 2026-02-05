@@ -25,6 +25,16 @@ Your contract with AI. Defines **what** you’re building, **who** it’s for, a
 - Use clear, specific language—avoid vague terms
 - Include user stories in “As a [user], I want [goal], so that [benefit]” format
 
+### Checklist for PRD §7 OUT OF SCOPE
+
+Before finalizing the PRD, confirm:
+
+- [ ] **Section 7 exists** and is titled "Explicitly OUT OF SCOPE" (or equivalent).
+- [ ] **You listed what you will NOT build**—at least 3–5 concrete items (e.g. "No user accounts", "No mobile app", "No real-time sync").
+- [ ] **You said no to common creep items** that might tempt scope expansion (e.g. admin dashboard, email notifications, export to PDF, dark mode, offline support)—only if they are truly out of scope for this version.
+- [ ] **Wording is specific** (not "We might skip X" but "X is out of scope for MVP").
+- [ ] **Other docs will reference PRD §7** rather than duplicating the list (single source of truth).
+
 ### Structure Template
 
 ```

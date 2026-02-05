@@ -2,6 +2,25 @@
 
 **Documentation-first, AI-friendly system** for building apps. This repo does not ship code or a framework—it defines **six canonical documents** that form your project’s knowledge base and act as the single source of truth. You (or an AI) write or generate these docs first, then build strictly from them. That reduces guesswork, limits scope creep, and gives you a clear way to verify the build matches the spec.
 
+## Quick start (30 seconds)
+
+In your project, create these six files (or clone this repo and replace their contents):
+
+```
+PRD.md
+APP_FLOW.md
+TECH_STACK.md
+FRONTEND_GUIDELINES.md
+BACKEND_STRUCTURE.md
+IMPLEMENTATION_PLAN.md
+```
+
+Then paste this **meta-prompt** into your AI (one-shot bootstrap):
+
+> Using the prompts-directory [documentation guide](documentation%20guide.md), generate all six documents for [your app idea]. Output PRD first, then APP_FLOW, TECH_STACK, FRONTEND_GUIDELINES, BACKEND_STRUCTURE, IMPLEMENTATION_PLAN. Use the structure and sample prompts from the guide for each.
+
+Refine the generated docs, then build from them with [SUPER_PROMPT.md](SUPER_PROMPT.md). See [examples/todo-app](examples/todo-app) for a minimal filled example.
+
 ## What This Repo Is
 
 Six documents, one contract:
@@ -52,12 +71,33 @@ Skip it for throwaway scripts or one-off experiments; it’s most useful for **r
 ### 4. In your editor (e.g. Cursor)
 
 - Add a rule or project instruction: *“When working in this project, follow SUPER_PROMPT.md and the six-document system from the prompts-directory repo.”*
-- That keeps every session aligned to the same workflow and doc order.
+- Copy-paste ready: use **[CURSOR_RULE.md](CURSOR_RULE.md)** into your project's `.cursor/rules` so every session follows the six-doc workflow.
+
+### 5. Definition of done
+
+A step is **done** when: (1) the code matches the referenced doc sections, (2) the step's success criteria are checked, and (3) no work from PRD §7 OUT OF SCOPE was added. When code and docs disagree, the docs win—update the docs or revert the code.
 
 ## Key Files
 
 - **[documentation guide.md](documentation%20guide.md)** — Full guide with structure templates and sample AI prompts for generating each document.
 - **[SUPER_PROMPT.md](SUPER_PROMPT.md)** — Single instruction set: when to use which doc, workflow, and hard rules. Use this (or inject it as context) when building with AI.
+- **[CURSOR_RULE.md](CURSOR_RULE.md)** — Copy-paste rule for Cursor so the six-doc system is applied in every session.
+- **[GLOSSARY.md](GLOSSARY.md)** — Short definitions: PRD, APP_FLOW, OUT OF SCOPE, P0/P1/P2, six-doc system, § references.
+- **[examples/todo-app](examples/todo-app)** — Minimal example with all six docs filled for a todo MVP.
+- **[IDEAS.md](IDEAS.md)** — Ideas to improve the repo (tooling, examples, GitHub setup, AI integration). Good for contributors and roadmap.
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** — How to suggest improvements and contribute.
+- **[GITHUB_SETUP.md](GITHUB_SETUP.md)** — Suggested repo description and topics for GitHub About.
+
+## Validation
+
+From the repo root (or from a project that has the six docs):
+
+```bash
+node scripts/validate.js
+# or: ./scripts/validate.sh
+```
+
+Checks: all six files exist; PRD has §7 OUT OF SCOPE. Optional: run in CI or pre-commit.
 
 ## Meta Prompts
 
